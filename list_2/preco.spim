@@ -1,0 +1,48 @@
+.data 
+pulalinha: .asciiz "\n"
+numero : double 100.0
+
+.text 
+main:
+li $v0,7
+syscall
+
+
+mov.d $f3,$f0
+
+
+li $v0,7
+syscall 
+
+mov.d $f6,$f0
+
+
+li $v0,7
+syscall 
+
+mov.d $f9,$f0
+
+mov.d $f8,$f3
+
+l.d $f10,numero
+div.d $f6,$f6,$f10
+div.d $f9,$f9,$f10
+
+
+mul.d $f6,$f3,$f6
+mul.d $f9,$f3,$f9
+add.d $f8,$f8,$f6
+add.d $f8,$f8,$f9
+
+li $v0,3
+mov.d $f12,$f8
+syscall 
+
+
+li $v0,4
+la $a0,pulalinha 
+syscall 
+
+
+li $v0,10
+syscall 

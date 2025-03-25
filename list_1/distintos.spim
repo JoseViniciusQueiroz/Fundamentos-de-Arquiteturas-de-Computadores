@@ -1,0 +1,26 @@
+
+.text
+.globl elemDistintos
+
+elemDistintos:
+    li $v0, 0
+    beq $a1, 0, end
+    lw $t1, 0($a0)
+    addi $v0, $v0, 1
+    addi $a1, $a1, -1
+    addi $a0, $a0, 4
+
+laco:
+    beq $a1, 0, end
+    lw $t0, 0($a0)
+    beq $t1, $t0, proximo
+    move $t1, $t0
+    addi $v0, $v0, 1
+
+proximo:
+    addi $a1, $a1, -1
+    addi $a0, $a0, 4
+    j laco
+
+end:
+    jr $ra
